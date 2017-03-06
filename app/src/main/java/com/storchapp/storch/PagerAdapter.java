@@ -24,11 +24,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter{
                 InfoTab infoTab = new InfoTab();
                 return infoTab;
             case 1:
-                SearchTab searchTab = new SearchTab();
-                return searchTab;
-            case 2:
                 PhotosTab photosTab = new PhotosTab();
                 return photosTab;
+            case 2:
+            SearchTab searchTab = new SearchTab();
+            return searchTab;
 
             default:
                 return null;

@@ -20,7 +20,7 @@ public class Store {
     private MarkerOptions markerOptions;
     private List<Integer> categoryIDList = new ArrayList<>();
 
-    protected static HashMap<Integer, Store> stores = new HashMap<>();
+    public static HashMap<Integer, Store> stores = new HashMap<>();
 
     public List<Category> getCategories() {
         List<Category> categories = new ArrayList<>();

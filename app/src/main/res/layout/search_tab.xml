@@ -13,6 +13,12 @@
     <SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/borders_for_text_view"/>
+        android:gravity="center"
+        android:layout_below="@id/viewpager"
+        android:layout_marginTop="@dimen/materialize_toolbar"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/round_search_bar"/>
 
 </RelativeLayout>

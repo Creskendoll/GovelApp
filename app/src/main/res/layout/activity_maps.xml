@@ -124,42 +124,6 @@ sothree:umanoShadowHeight="4dp">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 </android.support.design.widget.CoordinatorLayout>
-
-
-        <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:background="@color/background"
-            android:weightSum="1">
-
-            <ScrollView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.90">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Adres"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="storeInfo"/>
-                </LinearLayout>
-            </ScrollView>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img" />
-        </LinearLayout>-->
     </LinearLayout>
 
 

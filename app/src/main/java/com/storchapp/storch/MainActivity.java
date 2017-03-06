@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
 
+        new mBackgroundTask().execute((Void)null);
+
         //drawer build
         accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -292,7 +294,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return false;
     }
 
-    private class mAsyncTask extends AsyncTask<String, Void, Void>{
+    public class mBackgroundTask extends AsyncTask<Void, Void, Void> {
         RestClient rc = new RestClient();
 
         @Override
@@ -302,7 +304,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
 
         @Override
-        protected Void doInBackground(String... params) {
+        protected Void doInBackground(Void... params) {
             rc.updateCategories();
             rc.updateStores();
             return null;
@@ -313,5 +315,16 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
             super.onPostExecute(result);
         }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(Void result) {
+            super.onCancelled(result);
+        }
+
     }
 }

@@ -602,6 +602,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void showcaseBesiktas() {
+
         String showcasePlaces[][] = {
                 {"Derya Promosyon", "41.044232", "29.008083"},
                 {"Nokta Copy Center", "41.044087", "29.008058"},
@@ -610,6 +611,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 {"Sanat Copy Center", "41.043967", "29.008068"},
                 {"Tiridi Fabrika", "41.043913", "29.008064"}
         };
+
+        for(int i : Store.stores.keySet()){
+           showcasePlaces[i][0] = Store.stores.get(i).getstoreName();
+            showcasePlaces[i][1] = String.valueOf(Store.stores.get(i).getPosition().latitude);
+            showcasePlaces[i][2] = String.valueOf(Store.stores.get(i).getPosition().longitude);
+        }
+
         for (int i = 0; i < showcasePlaces.length; i++) {
             LatLng placeLatLng = new LatLng(Double.parseDouble(showcasePlaces[i][1]),
                     Double.parseDouble(showcasePlaces[i][2]));
