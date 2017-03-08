@@ -41,6 +41,8 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +83,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelSlideListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -105,6 +108,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private double latitude, longitude, longitude_cur, latitude_cur;
 
     private Marker marker;
+    private Store tempMarkerStore;
 
     private Location mBestLocation;
     private LocationRequest mLocationRequest;
@@ -122,6 +126,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Drawer rightDrawer = null;
 
     private TextView slidingDrawerTextView;
+
+    private ListView infoTabListView;
 
     private static final long ONE_MIN = 1000 * 60;
     private static final long TWO_MIN = ONE_MIN * 2;
@@ -210,7 +216,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         AccountHeader accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withCompactStyle(true)
-                .withHeaderBackground(R.drawable.foto_background)
                 .addProfiles(
                         new ProfileDrawerItem().withName("Kenan Soylu")
                                 .withEmail("adsasd@gmail.com").withIcon(R.drawable.ic_launcher),
@@ -343,6 +348,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }else{
                         ss.append(snippet);
                     }
+                    setUpListview();
                     slidingDrawerTextView.setText(ss);
                 }else if(previousState == SlidingUpPanelLayout.PanelState.DRAGGING &&
                         newState == SlidingUpPanelLayout.PanelState.COLLAPSED){
@@ -350,6 +356,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         });
+    }
+
+    private void setUpListview(){
+        infoTabListView = (ListView) findViewById(R.id.infoTabListView);
+        ArrayList<String> infos = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, infos);
+        //infos.add(tempMarkerStore.getPhoneNumber());
+        //infos.add(tempMarkerStore.getWebSite());
+        //infos.add(tempMarkerStore.geteMail());
+        infos.add(tempMarkerStore.getAddress());
+        infos.add(tempMarkerStore.getstoreName());
+        infoTabListView.setAdapter(adapter);
     }
 
     protected void onStart() {
@@ -445,7 +464,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        showcaseBesiktas();
+        setUpMarkers();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -591,6 +610,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onMarkerClick(final Marker marker) {
         this.marker = marker;
+        tempMarkerStore = (Store) marker.getTag();
+
         latitude = marker.getPosition().latitude;
         longitude = marker.getPosition().longitude;
         gMapButton.setVisibility(View.VISIBLE);
@@ -599,6 +620,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //   showDrawer(marker);
         return false;
+    }
+
+    //TODO:masterPiece
+    private void setUpMarkers(){
+        for(int i : Store.stores.keySet()){
+            Marker marker = mMap.addMarker(new MarkerOptions()
+                    .title(Store.stores.get(i).getstoreName())
+                    .position(Store.stores.get(i).getPosition())
+                    .snippet(Store.stores.get(i).getAddress()));
+            marker.setTag(Store.stores.get(i));
+        }
     }
 
     private void showcaseBesiktas() {
@@ -612,11 +644,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 {"Tiridi Fabrika", "41.043913", "29.008064"}
         };
 
+
+
         for(int i : Store.stores.keySet()){
-           showcasePlaces[i][0] = Store.stores.get(i).getstoreName();
+            showcasePlaces[i][0] = Store.stores.get(i).getstoreName();
             showcasePlaces[i][1] = String.valueOf(Store.stores.get(i).getPosition().latitude);
             showcasePlaces[i][2] = String.valueOf(Store.stores.get(i).getPosition().longitude);
         }
+
 
         for (int i = 0; i < showcasePlaces.length; i++) {
             LatLng placeLatLng = new LatLng(Double.parseDouble(showcasePlaces[i][1]),

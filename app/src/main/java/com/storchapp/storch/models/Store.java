@@ -12,7 +12,7 @@ public class Store {
     final static String TAG = "Store";
     private int id;
     private String storeName, phoneNumber, eMail, address,
-            contactName, contactNumber, storeInfo, webSite;
+              storeInfo, webSite;
     private LatLng position;
     private int storeCode;
 
@@ -128,32 +128,12 @@ public class Store {
         this.address = address;
     }
 
-    public String getContactName() {
-        return contactName;
-    }
-
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
     public int getStoreCode() {
         return storeCode;
     }
 
     public void setStoreCode(int storeCode) {
         this.storeCode = storeCode;
-    }
-
-    public void setMarkerOptions(MarkerOptions markerOptions) {
-        this.markerOptions = markerOptions;
     }
 
     public String getWebSite() {

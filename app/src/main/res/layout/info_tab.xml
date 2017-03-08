@@ -10,5 +10,17 @@
         android:layout_centerInParent="true"
         android:textSize="50dp"
         android:text="storeInfo tab"/>
+    <ListView
+        android:id="@+id/infoTabListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="3dp"
+        android:layout_marginTop="@dimen/materialize_toolbar">
+    </ListView>
+
 
 </RelativeLayout>

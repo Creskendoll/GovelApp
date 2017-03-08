@@ -48,7 +48,6 @@ public class StoreParser {
             store.setWebSite(storeJSON.getString("website_address"));
             store.setPosition(Double.parseDouble(storeJSON.getString("latitude")),
                     Double.parseDouble(storeJSON.getString("longitude")));
-            store.setContactName(storeJSON.getString("contact_name"));
 
             return store;
 

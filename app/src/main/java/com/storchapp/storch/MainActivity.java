@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         //overridePendingTransition(R.anim.drawer_close, R.anim.drawer_open);
         setContentView(R.layout.activity_main);
 
-
         logo = (ImageView) findViewById(R.id.ic_launcher);
         searchBar = (AutoCompleteTextView) findViewById(R.id.searchBar);
         logInButton = (AppCompatButton) findViewById(R.id.btn_login);
@@ -312,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         @Override
         protected void onPostExecute(Void result) {
-            Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
             super.onPostExecute(result);
         }
 
