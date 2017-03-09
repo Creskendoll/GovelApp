@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,11 +24,9 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import android.support.v4.view.*;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -65,10 +62,7 @@ import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.model.ExpandableBadgeDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
-import com.mikepenz.materialdrawer.model.ToggleDrawerItem;
-import com.storchapp.storch.jsonparser.QueryParser;
 import com.storchapp.storch.locationmenager.LocationManagerCheck;
-import com.storchapp.storch.restclient.RestClient;
 import com.storchapp.storch.models.Store;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -348,7 +342,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }else{
                         ss.append(snippet);
                     }
-                    setUpListview();
                     slidingDrawerTextView.setText(ss);
                 }else if(previousState == SlidingUpPanelLayout.PanelState.DRAGGING &&
                         newState == SlidingUpPanelLayout.PanelState.COLLAPSED){
@@ -617,8 +610,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         gMapButton.setVisibility(View.VISIBLE);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         ((TextView) findViewById(R.id.shopNameText)).setText(marker.getTitle());
+        setUpListview();
 
-        //   showDrawer(marker);
         return false;
     }
 
