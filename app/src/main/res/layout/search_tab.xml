@@ -13,12 +13,22 @@
     <SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_below="@id/viewpager"
-        android:layout_marginTop="@dimen/materialize_toolbar"
-        android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/round_search_bar"/>
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_search_bar"
+        android:gravity="center" />
+
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </GridView>
 
 </RelativeLayout>

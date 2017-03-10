@@ -62,6 +62,7 @@ import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.materialdrawer.model.ExpandableBadgeDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
+import com.storchapp.storch.listModel.CustomAdapter;
 import com.storchapp.storch.locationmenager.LocationManagerCheck;
 import com.storchapp.storch.models.Store;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -360,7 +361,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //infos.add(tempMarkerStore.getWebSite());
         //infos.add(tempMarkerStore.geteMail());
         infos.add(tempMarkerStore.getAddress());
+        infos.add(tempMarkerStore.getAddress());
+        infos.add(tempMarkerStore.getAddress());
+        infos.add(tempMarkerStore.getAddress());
         infos.add(tempMarkerStore.getstoreName());
+
+        String[] infosArray = new String[infos.size()];
+        infosArray = infos.toArray(infosArray);
+
+        CustomAdapter customAdapter = new CustomAdapter(infosArray, this);
         infoTabListView.setAdapter(adapter);
     }
 

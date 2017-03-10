@@ -115,7 +115,7 @@ public class RestClient extends Activity{
     }
 
     public void updateStores(){
-        //https://95.85.27.32/stores/
+        //httpsGetRawString("https://95.85.27.32/stores/")
         try{
             sp.parseStoreList(asd);
             CacheHandler.writeData(asd, getApplicationContext());

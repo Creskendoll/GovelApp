@@ -45,7 +45,7 @@ sothree:umanoShadowHeight="4dp">
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="com.storchapp.storch.MapsActivity"
-            tools:layout="@layout/activity_maps" /> -->
+            tools:layout="@layout/activity_maps" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/buttonDirection"
@@ -67,7 +67,7 @@ sothree:umanoShadowHeight="4dp">
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             app:layout_anchor="@id/map"
-            android:src="@android:drawable/ic_menu_compass"
+            android:src="@drawable/location_icon_56x56"
             app:layout_anchorGravity="bottom|right|end" />
 
         <android.support.design.widget.FloatingActionButton
@@ -77,8 +77,9 @@ sothree:umanoShadowHeight="4dp">
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             app:layout_anchor="@id/map"
+            android:background="@drawable/filter_icon_112x112"
             android:layout_marginTop="100dp"
-            android:src="@android:drawable/ic_menu_preferences"
+            android:src="@drawable/filter_icon_112x112"
             app:layout_anchorGravity="top|right|end" />
     </android.support.design.widget.CoordinatorLayout>
 

@@ -20,8 +20,8 @@ import com.storchapp.storch.R;
 public class CustomAdapter extends BaseAdapter{
     private String[] texts;
     private Context context;
-    private FontAwesome.Icon[] icons = {FontAwesome.Icon.faw_phone, FontAwesome.Icon.faw_internet_explorer,
-            FontAwesome.Icon.faw_envelope, FontAwesome.Icon.faw_car, FontAwesome.Icon.faw_hourglass};
+    private int[] icons = {R.drawable.phone_icon_24x24, R.drawable.web_icon_24x24,
+            R.drawable.mail_icon_24x24, R.drawable.direction_icon};
 
     public CustomAdapter(String[] texts, Context context){
         this.texts = texts;
@@ -50,9 +50,9 @@ public class CustomAdapter extends BaseAdapter{
         View row = layoutInflater.inflate(R.layout.info_page_row, parent, false);
         TextView textView =(TextView) row.findViewById(R.id.row_text);
         ImageView imageView = (ImageView) row.findViewById(R.id.imgIcon);
-        imageView.setImageResource((ImageView)icons[position]);
+      //  imageView.setImageResource((ImageView)icons[position]);
         textView.setText(texts[position]);
-
+        imageView.setImageResource(icons[position]);
         return row;
     }
 }

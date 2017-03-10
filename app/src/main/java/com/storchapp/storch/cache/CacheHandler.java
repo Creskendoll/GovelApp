@@ -18,7 +18,8 @@ public class CacheHandler {
 
     private static final String TAG = "CacheHandler";
     public static void writeData(String data, Context context) throws IOException {
-        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("cache.txt", Context.MODE_PRIVATE));
+        OutputStreamWriter outputStreamWriter =
+                new OutputStreamWriter(context.openFileOutput("cache.txt", Context.MODE_PRIVATE));
         outputStreamWriter.write(data);
         outputStreamWriter.close();
     }
